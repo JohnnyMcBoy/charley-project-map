@@ -16,5 +16,6 @@ app.layout = html.Div(style={'backgroundColor': 'pink'}, children=[
     )
 ])
 
+# Set debug to True, so server doesn't have to refresh everytime we change something
 if __name__ == '__main__':
     app.run_server(debug=True)
