@@ -1,3 +1,4 @@
+import time
 import pandas as pd
 
 from geopy.geocoders import Nominatim
@@ -23,7 +24,12 @@ for index, row in df.iterrows():
     location_string = str(location)
 
     # Use geolocator to grab more verbose location information
-    location_geo = geolocator.geocode(location_string)
+    try:
+        location_geo = geolocator.geocode(location_string, timeout=None)
+    except:
+        print('sleep')
+        time.sleep(5)
+        continue
 
     # Check that the location value exists. If it does, add to a list. If it doesn't, add empty string
     if location_geo != None:
@@ -41,8 +47,8 @@ print('loop done!')
 
 # Add lists to CSV
 df = pd.read_csv("charley.csv")
-df["newLong"] = lon_list
-df["newLat"] = lat_list
+df["Long"] = lon_list
+df["Lat"] = lat_list
 df.to_csv("charley.csv", index=False)
 
 print('csv done!')
