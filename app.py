@@ -58,6 +58,7 @@ fig.update_layout(
 
 # DASH APP STARTS
 app = dash.Dash(__name__)
+server = app.server
 
 app.layout = html.Div(
     className="container", 
