@@ -3,19 +3,33 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 import pandas as pd
+from datetime import datetime
 
 df = pd.read_csv('charley.csv')
-#df['text'] = df['airport'] + '' + df['city'] + ', ' + df['state'] + '' + 'Arrivals: ' + df['cnt'].astype(str)
+
+Date=df['Missing From']
+SizeDate=len(Date)
+SDate=[' ']*SizeDate
+d=[' ']*SizeDate
+WordDate=[' ']*SizeDate
+x=0
+for i in Date:
+    SDate[x]=str(Date[x])
+    d[x] = datetime.strptime(SDate[x], '%m/%d/%Y')
+    WordDate[x]=d[x].strftime('%d, %B %Y')
+    x = x+1
+
+df['text'] = df['Location'] + '\n' +  'Name: ' + df['Name'] + '\n' +  ' Sex: ' + df['Sex'] + '\n' +  ' Missing From: ' + WordDate
 
 # FIG
 fig = go.Figure(data=go.Scattergeo(
         lon = df['Long'],
         lat = df['Lat'],
-        #text = df['text'],
+        text = df['text'],
         mode = 'markers',
-        marker_size = 8,
+        marker_size = 4,
         marker_color = "rgb(255, 0, 0)",
-        marker_line = dict(color = "rgb(0, 0, 0)" , width=0.5)
+        marker_line = dict(color = "rgb(0, 0, 0)" , width=0.25)
         ))
 
 fig.update_layout(
@@ -58,7 +72,6 @@ fig.update_layout(
 
 # DASH APP STARTS
 app = dash.Dash(__name__)
-server = app.server
 
 app.layout = html.Div(
     className="container", 
