@@ -56,21 +56,21 @@ table {
 }
 
 /* LAYOUT */
-.container {
+/* .container {
     width: 90vw;
     margin: 30px auto;
-}
+} */
 
 
 /* HEADINGS */
-h1 {
+/* h1 {
     font-size: 40px;
     word-spacing: 100vw;
-}
+} */
 
 
 /* GENERAL */
-a {
+/* a {
     color: red;
     text-decoration: underline;
 }
@@ -79,17 +79,17 @@ a:hover,
 a:visited,
 a:active {
     color: red;
-}
+} */
 
 
 
 
 
 /* MEDIA QUERIES */
-@media screen and (min-width: 700px) {
+/* @media screen and (min-width: 700px) { */
     
     /* HEADINGS */
-    h1 {
+    /* h1 {
         font-size: 60px;
     }
-}
+} */

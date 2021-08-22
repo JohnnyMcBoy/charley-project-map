@@ -44,8 +44,8 @@ fig.update_layout(
     margin=go.layout.Margin(
         l=0,
         r=0,
-        b=0,
-        t=30,
+        b=50,
+        t=50,
         pad=0
     ),
     title = 'Missing People, Cold Cases',
