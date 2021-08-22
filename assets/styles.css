@@ -75,6 +75,12 @@ a {
     text-decoration: underline;
 }
 
+a:hover,
+a:visited,
+a:active {
+    color: red;
+}
+
 
 
 
