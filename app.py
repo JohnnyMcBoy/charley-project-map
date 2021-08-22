@@ -19,7 +19,8 @@ for i in Date:
     WordDate[x]=d[x].strftime('%d, %B %Y')
     x = x+1
 
-df['text'] = '<b>'+df['Name']+'</b>' + '<br>' +  'Sex: ' + df['Sex'] + '<br>' +  'Location: ' + df['Location'] + '<br>' +  'Missing Since: ' + WordDate
+df['text'] = '<b>'+df['Name']+'</b>' + '<br>' +  'Sex: ' + df['Sex'] + '<br>' +  'Location: ' + df['Location'] + '<br>' +  'Missing Since: ' + WordDate 
+
 
 # FIG
 fig = go.Figure(data=go.Scattergeo(
@@ -92,6 +93,7 @@ fig.update_layout(
 
 # DASH APP STARTS
 app = dash.Dash(__name__)
+server = app.server
 
 app.title = 'Charley Project Map'
 
