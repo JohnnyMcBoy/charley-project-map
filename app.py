@@ -19,7 +19,7 @@ for i in Date:
     WordDate[x]=d[x].strftime('%d, %B %Y')
     x = x+1
 
-df['text'] = df['Location'] + '\n' +  'Name: ' + df['Name'] + '\n' +  ' Sex: ' + df['Sex'] + '\n' +  ' Missing From: ' + WordDate
+df['text'] = '<b>'+df['Name']+'</b>' + '<br>' +  'Sex: ' + df['Sex'] + '<br>' +  'Location: ' + df['Location'] + '<br>' +  'Missing Since: ' + WordDate
 
 # FIG
 fig = go.Figure(data=go.Scattergeo(
@@ -29,7 +29,14 @@ fig = go.Figure(data=go.Scattergeo(
         mode = 'markers',
         marker_size = 4,
         marker_color = "rgb(255, 0, 0)",
-        marker_line = dict(color = "rgb(0, 0, 0)" , width=0.25)
+        marker_opacity = 1,
+        marker_line = dict(color = "rgb(255, 0, 0)" , width=0.25),
+        hoverinfo="text"
+        #hovertemplate =
+        #"<i>{}</i>"+
+        #'<br><b>X</b>: %{x}<br>'+
+        #'<b>%{text}</b>',
+        #text = ['Custom text {}'.format(i) for i in df['Name'] + 'thing'],
         ))
 
 fig.update_layout(
@@ -56,8 +63,8 @@ fig.update_layout(
         
         resolution = 50,
         projection = dict(
-            #type = 'conic conformal',
-            type = 'bonne',
+            type = 'conic conformal',
+            #type = 'bonne',
             rotation_lon = -100
         ),
         lonaxis = dict(
@@ -72,7 +79,13 @@ fig.update_layout(
             range= [ 20.0, 60.0 ],
             dtick = 5
         )
-    )
+    ),
+
+    hoverlabel=dict(
+        bgcolor="white",
+        font_size=16,
+        font_family="Arial, Helvetica, sans-serif"
+    ),
 )
 # fig.show()
 # FIG ENDS
