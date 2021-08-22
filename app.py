@@ -19,7 +19,7 @@ for i in Date:
     WordDate[x]=d[x].strftime('%d, %B %Y')
     x = x+1
 
-df['text'] = df['Location'] + '\n' +  'Name: ' + df['Name'] + '\n' +  ' Sex: ' + df['Sex'] + '\n' +  ' Missing From: ' + WordDate
+df['text'] = df['Name'] + ', ' +  df['Sex'] +  ' Missing Since: ' + WordDate + ' Missing From: ' + df['Location'] 
 
 # FIG
 fig = go.Figure(data=go.Scattergeo(
