@@ -64,7 +64,7 @@ fig.update_layout(
         
         resolution = 50,
         projection = dict(
-            type = 'conic conformal',
+            type = 'azimuthal equal area',
             #type = 'bonne',
             rotation_lon = -100
         ),
@@ -161,7 +161,7 @@ app.layout = html.Div(
             children=[
                 dcc.Graph(
                     id="map",
-                    figure=fig
+                    figure=fig, 
                 )
             ]
         )
