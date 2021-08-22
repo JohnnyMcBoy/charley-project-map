@@ -33,8 +33,15 @@ fig = go.Figure(data=go.Scattergeo(
         ))
 
 fig.update_layout(
-        title = 'Missing People, Cold Cases',
-        geo = dict(
+    margin=go.layout.Margin(
+        l=0,
+        r=0,
+        b=0,
+        t=30,
+        pad=0
+    ),
+    title = 'Missing People, Cold Cases',
+    geo = dict(
         scope = 'world',
         showland = True,
         landcolor = "rgb(64, 64, 64)",
@@ -73,28 +80,61 @@ fig.update_layout(
 # DASH APP STARTS
 app = dash.Dash(__name__)
 
+app.title = 'Charley Project Map'
+
 app.layout = html.Div(
     className="container", 
-    style={"width": "80vw", "margin": "30px auto"},
+    style={
+        "width": "80vw",
+        'maxWidth': '1000', 
+        "margin": "30px auto"
+        },
     children=[
         html.Header(
+            style={
+                'display': 'flex',
+                'flex-wrap': 'wrap',
+                'paddingBottom': '30',
+                'borderBottom': '1px solid black'
+            },
             children=[
                 html.H1(
+                    style={
+                        'fontFamily': 'Arial, Helvetica, sans-serif',
+                        'wordSpacing': '100vw',
+                        'flex': '0 1 20%',
+                        'paddingRight': '20'
+                    },
                     children=[
                         html.Span(
-                            "The Charley Project ", style={"color": "black", 'fontFamily': 'Arial, Helvetica, sans-serif'}
+                            "The "
                         ),
                         html.Span (
-                            "Map", style={"color": "red", 'fontFamily': 'Arial, Helvetica, sans-serif'}
+                            "Charley ", 
+                            style={"color": "red"}
+                        ),
+                        html.Span(
+                            "Project "
+                        ),
+                        html.Span (
+                            "Map", 
+                            style={"color": "#565656"}
                         )
                     ]
                 ),
                 html.P(
-                    style={'fontFamily': 'Arial, Helvetica, sans-serif', "fontSize": "16", "lineHeight": "1.5"},
+                    style={
+                        'fontFamily': 'Arial, Helvetica, sans-serif', 
+                        "fontSize": "16", 
+                        "lineHeight": "1.5",
+                        'flex': '0 1 70%',
+                        'align-self': 'flex-end'},
                     children=[
                         'The Charley Project profiles over 14,000 “cold case” missing people mainly from the United States. It does not actively investigate cases; it is merely a publicity vehicle for missing people who are often neglected by the press and forgotten all too soon. (Source: ',
-                        html.A('The Charley Project',
-                            href="https://charleyproject.org/"
+                        html.A(
+                            children=['The Charley Project'],
+                            href="https://charleyproject.org/",
+                            style={'color': 'red'}
                         ), 
                         ').'
                     ]
