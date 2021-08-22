@@ -75,21 +75,29 @@ app = dash.Dash(__name__)
 
 app.layout = html.Div(
     className="container", 
+    style={"width": "80vw", "margin": "30px auto"},
     children=[
         html.Header(
             children=[
                 html.H1(
                     children=[
                         html.Span(
-                            "The Charley Project ", style={"color": "black"}
+                            "The Charley Project ", style={"color": "black", 'fontFamily': 'Arial, Helvetica, sans-serif'}
                         ),
                         html.Span (
-                            "Map", style={"color": "red"}
+                            "Map", style={"color": "red", 'fontFamily': 'Arial, Helvetica, sans-serif'}
                         )
                     ]
                 ),
                 html.P(
-                    'The Charley Project profiles over 14,000 “cold case” missing people mainly from the United States. It does not actively investigate cases; it is merely a publicity vehicle for missing people who are often neglected by the press and forgotten all too soon. (Source: <a href="https://charleyproject.org/">The Charley Project</a>'
+                    style={'fontFamily': 'Arial, Helvetica, sans-serif', "fontSize": "16", "lineHeight": "1.5"},
+                    children=[
+                        'The Charley Project profiles over 14,000 “cold case” missing people mainly from the United States. It does not actively investigate cases; it is merely a publicity vehicle for missing people who are often neglected by the press and forgotten all too soon. (Source: ',
+                        html.A('The Charley Project',
+                            href="https://charleyproject.org/"
+                        ), 
+                        ').'
+                    ]
                 )
             ]
         ),
@@ -104,6 +112,8 @@ app.layout = html.Div(
         )
     ]
 )
+# DASH APP ENDS
+
 
 # Set debug to True, so server doesn't have to refresh everytime we change something
 if __name__ == '__main__':
